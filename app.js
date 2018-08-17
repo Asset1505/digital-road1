@@ -14,25 +14,25 @@ mongoose.connect('mongodb://localhost:27017/polyglotdev-test', { useNewUrlParser
 var holeData = new mongoose.Schema({
   data:{
     lat: {
-      type: Array,
+      type: String
     },
     lon: {
-      type: Array
+      type: String
     },
     width: {
-      type: Array
+      type: String
     },
     length: {
-      type: Array
+      type: String
     },
     area: {
-      type: Array
+      type: String
     },
     level: {
-      type: Array
+      type: String
     },
     price: {
-      type: Array
+      type: String
     }
   }
 });
@@ -99,7 +99,8 @@ app.post('/', upload.single('test'), function (req, res, next) {
     arr1.push({ val: i, arr: [0, 1, 2, 3, 4, 5] });
   }
 
-  var myData = new Hole({lat:arr}, {lon:arr}, {width:arr}, {length:arr}, {area:arr}, {level:arr}, {price:arr});
+  var myData = new Hole({data: { lat: arr[0], lon: arr[1], width:arr[2], length:arr[3], area:arr[4],
+    level:arr[5], price:arr[6], img: ('./uploads/' + imgName)}});
 /*
   Hole.create({ data: arr }).
   then(doc => {
