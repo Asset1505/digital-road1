@@ -8,6 +8,8 @@ var path = require('path');
 var Lazy = require('lazy');
 var csv = require('node-csv').createParser();
 
+var port = process.env.PORT || 3000
+
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/polyglotdev-test', { useNewUrlParser: true });
 
@@ -170,6 +172,6 @@ app.post('/fileInConsole', upload.array('file', 12), function (req, res, next) {
 });
 */
 
-var server = app.listen(3000, function() {
+var server = app.listen(port, function() {
     console.log("Listening on port %s...", server.address().port);
 });
